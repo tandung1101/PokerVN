@@ -1,0 +1,473 @@
+<abp-page [title]="'::PokerClubs' | abpLocalization">
+  <abp-page-toolbar-container class="col">
+    <div class="text-lg-end pt-2">
+      <button
+        class="btn btn-primary btn-sm mx-2"
+        type="button"
+        [disabled]="isExportToExcelBusy"
+        (click)="exportToExcel()"
+      >
+        {{ '::ExportToExcel' | abpLocalization }}
+      </button>
+
+      <button
+        *abpPermission="'PokerVN.PokerClubs.Create'"
+        class="btn btn-primary btn-sm"
+        type="button"
+        (click)="create()"
+      >
+        <i class="fa fa-plus me-1" aria-hidden="true"></i>
+        {{ '::NewPokerClub' | abpLocalization }}
+      </button>
+    </div>
+  </abp-page-toolbar-container>
+
+  <abp-advanced-entity-filters localizationSourceName="" [list]="list">
+    <abp-advanced-entity-filters-form>
+      <form #filterForm (keyup.enter)="list.get()">
+        <div class="row">
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="clubCodeFilter">
+                {{ '::ClubCode' | abpLocalization }}
+              </label>
+
+              <input
+                id="clubCodeFilter"
+                class="form-control"
+                [(ngModel)]="filters.clubCode"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="clubNameFilter">
+                {{ '::ClubName' | abpLocalization }}
+              </label>
+
+              <input
+                id="clubNameFilter"
+                class="form-control"
+                [(ngModel)]="filters.clubName"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="aliasNameFilter">
+                {{ '::AliasName' | abpLocalization }}
+              </label>
+
+              <input
+                id="aliasNameFilter"
+                class="form-control"
+                [(ngModel)]="filters.aliasName"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="releaseDateFilter">
+                {{ '::ReleaseDate' | abpLocalization }}
+              </label>
+
+              <input
+                id="releaseDateFilter"
+                class="form-control"
+                [(ngModel)]="filters.releaseDate"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="clubAddressFilter">
+                {{ '::ClubAddress' | abpLocalization }}
+              </label>
+
+              <input
+                id="clubAddressFilter"
+                class="form-control"
+                [(ngModel)]="filters.clubAddress"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="clubAddress1Filter">
+                {{ '::ClubAddress1' | abpLocalization }}
+              </label>
+
+              <input
+                id="clubAddress1Filter"
+                class="form-control"
+                [(ngModel)]="filters.clubAddress1"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="clubAddress2Filter">
+                {{ '::ClubAddress2' | abpLocalization }}
+              </label>
+
+              <input
+                id="clubAddress2Filter"
+                class="form-control"
+                [(ngModel)]="filters.clubAddress2"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="clubAddress3Filter">
+                {{ '::ClubAddress3' | abpLocalization }}
+              </label>
+
+              <input
+                id="clubAddress3Filter"
+                class="form-control"
+                [(ngModel)]="filters.clubAddress3"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="phoneNumberFilter">
+                {{ '::PhoneNumber' | abpLocalization }}
+              </label>
+
+              <input
+                id="phoneNumberFilter"
+                class="form-control"
+                [(ngModel)]="filters.phoneNumber"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="emailFilter">
+                {{ '::Email' | abpLocalization }}
+              </label>
+
+              <input
+                id="emailFilter"
+                class="form-control"
+                [(ngModel)]="filters.email"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="refFbFilter">
+                {{ '::RefFb' | abpLocalization }}
+              </label>
+
+              <input
+                id="refFbFilter"
+                class="form-control"
+                [(ngModel)]="filters.refFb"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="descriptionFilter">
+                {{ '::Description' | abpLocalization }}
+              </label>
+
+              <input
+                id="descriptionFilter"
+                class="form-control"
+                [(ngModel)]="filters.description"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="statusCodeFilter">
+                {{ '::StatusCode' | abpLocalization }}
+              </label>
+
+              <input
+                id="statusCodeFilter"
+                class="form-control"
+                [(ngModel)]="filters.statusCode"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-auto align-self-end mb-3">
+            <div class="row">
+              <div class="col-6 col-sm-auto d-grid">
+                <button type="button" class="btn btn-outline-primary" (click)="clearFilters()">
+                  <span>{{ 'AbpUi::Clear' | abpLocalization }}</span>
+                </button>
+              </div>
+              <div class="col-6 col-sm-auto d-grid">
+                <button type="button" class="btn btn-primary" (click)="list.get()">
+                  <span>{{ 'AbpUi::Refresh' | abpLocalization }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </abp-advanced-entity-filters-form>
+  </abp-advanced-entity-filters>
+
+  <div class="card">
+    <div class="card-body">
+      <ngx-datatable [rows]="data.items" [count]="data.totalCount" [list]="list" default>
+        <ngx-datatable-column
+          [name]="'AbpUi::Actions' | abpLocalization"
+          [maxWidth]="150"
+          [width]="150"
+          [sortable]="false"
+        >
+          <ng-template let-row="row" let-i="rowIndex" ngx-datatable-cell-template>
+            <div ngbDropdown container="body" class="d-inline-block">
+              <button
+                class="btn btn-primary btn-sm dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                ngbDropdownToggle
+              >
+                <i class="fa fa-cog me-1" aria-hidden="true"></i>
+                {{ 'AbpUi::Actions' | abpLocalization }}
+              </button>
+
+              <div ngbDropdownMenu>
+                <button
+                  ngbDropdownItem
+                  *abpPermission="'PokerVN.PokerClubs.Edit'"
+                  (click)="update(row)"
+                >
+                  {{ 'AbpUi::Edit' | abpLocalization }}
+                </button>
+
+                <button
+                  ngbDropdownItem
+                  *abpPermission="'PokerVN.PokerClubs.Delete'"
+                  (click)="delete(row)"
+                >
+                  {{ 'AbpUi::Delete' | abpLocalization }}
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::ClubCode' | abpLocalization }}" prop="clubCode">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.clubCode }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::ClubName' | abpLocalization }}" prop="clubName">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.clubName }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::AliasName' | abpLocalization }}" prop="aliasName">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.aliasName }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::ReleaseDate' | abpLocalization }}" prop="releaseDate">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.releaseDate }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::ClubAddress' | abpLocalization }}" prop="clubAddress">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.clubAddress }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::ClubAddress1' | abpLocalization }}" prop="clubAddress1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.clubAddress1 }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::ClubAddress2' | abpLocalization }}" prop="clubAddress2">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.clubAddress2 }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::ClubAddress3' | abpLocalization }}" prop="clubAddress3">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.clubAddress3 }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::PhoneNumber' | abpLocalization }}" prop="phoneNumber">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.phoneNumber }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::Email' | abpLocalization }}" prop="email">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.email }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::RefFb' | abpLocalization }}" prop="refFb">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.refFb }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::Description' | abpLocalization }}" prop="description">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.description }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::StatusCode' | abpLocalization }}" prop="statusCode">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.statusCode }}
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</abp-page>
+
+<abp-modal [busy]="isModalBusy" [(visible)]="isModalOpen">
+  <ng-template #abpHeader>
+    <h3>
+      {{ (selected ? 'AbpUi::Edit' : '::NewPokerClub') | abpLocalization }}
+    </h3>
+  </ng-template>
+
+  <ng-template #abpBody>
+    <form [formGroup]="form" id="poker-club" (ngSubmit)="submitForm()" validateOnSubmit>
+      <div class="mt-2 fade-in-top">
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-club-code">
+            {{ '::ClubCode' | abpLocalization }}
+          </label>
+
+          <input
+            id="poker-club-club-code"
+            formControlName="clubCode"
+            class="form-control"
+            autofocus
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-club-name">
+            {{ '::ClubName' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-club-name" formControlName="clubName" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-alias-name">
+            {{ '::AliasName' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-alias-name" formControlName="aliasName" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-release-date">
+            {{ '::ReleaseDate' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-release-date" formControlName="releaseDate" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-club-address">
+            {{ '::ClubAddress' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-club-address" formControlName="clubAddress" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-club-address1">
+            {{ '::ClubAddress1' | abpLocalization }}
+          </label>
+
+          <input
+            id="poker-club-club-address1"
+            formControlName="clubAddress1"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-club-address2">
+            {{ '::ClubAddress2' | abpLocalization }}
+          </label>
+
+          <input
+            id="poker-club-club-address2"
+            formControlName="clubAddress2"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-club-address3">
+            {{ '::ClubAddress3' | abpLocalization }}
+          </label>
+
+          <input
+            id="poker-club-club-address3"
+            formControlName="clubAddress3"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-phone-number">
+            {{ '::PhoneNumber' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-phone-number" formControlName="phoneNumber" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-email">
+            {{ '::Email' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-email" formControlName="email" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-ref-fb">
+            {{ '::RefFb' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-ref-fb" formControlName="refFb" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-description">
+            {{ '::Description' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-description" formControlName="description" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="poker-club-status-code">
+            {{ '::StatusCode' | abpLocalization }}
+          </label>
+
+          <input id="poker-club-status-code" formControlName="statusCode" class="form-control" />
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #abpFooter>
+    <button type="button" class="btn btn-secondary" abpClose>
+      {{ 'AbpUi::Cancel' | abpLocalization }}
+    </button>
+
+    <abp-button iconClass="fa fa-check" buttonType="submit" formName="poker-club">
+      {{ 'AbpUi::Save' | abpLocalization }}
+    </abp-button>
+  </ng-template>
+</abp-modal>
