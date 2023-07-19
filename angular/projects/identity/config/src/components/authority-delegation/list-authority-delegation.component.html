@@ -1,0 +1,70 @@
+<div class="text-end mb-2">
+  <button id="create-delegate-user" class="btn btn-primary" type="button" (click)="create()">
+    {{ 'AbpAccount::DelegateNewUser' | abpLocalization }}
+  </button>
+
+  <div class="mt-2">
+    <label class="form-label d-inline-block">
+      {{ 'AbpAccount::Search' | abpLocalization }}
+      <input
+        type="search"
+        class="form-control form-control-sm d-inline-block w-auto"
+        [(ngModel)]="filterText"
+        [ngModelOptions]="{ standalone: true }"
+        (ngModelChange)="filterByText()"
+        aria-controls="DelegatedUsersTable"
+      />
+    </label>
+  </div>
+</div>
+
+<ngx-datatable [rows]="filteredData" [count]="resultCount" [list]="list" default>
+  <ngx-datatable-column
+    [name]="'AbpUi::Actions' | abpLocalization"
+    [maxWidth]="100"
+    [sortable]="false"
+  >
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <button class="btn btn-danger btn-sm" (click)="delete(row)">
+        {{ 'AbpAccount::Delete' | abpLocalization }}
+      </button>
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [name]="'AbpUi::Status' | abpLocalization" [maxWidth]="125">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <span class="badge bg-{{ service.statusClass(row) }}">
+        {{ 'AbpAccount::Status' + service.getStatus(row) | abpLocalization }}
+      </span>
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column
+    [sortable]="true"
+    [name]="'AbpAccount::UserName' | abpLocalization"
+    prop="userName"
+  >
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [name]="'AbpAccount::StartTime' | abpLocalization">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{ row.startTime | shortDateTime }}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column [name]="'AbpAccount::EndTime' | abpLocalization">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{ row.endTime | shortDateTime }}
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
+
+<abp-modal [(visible)]="isNewUserDelegateModalOpen" [suppressUnsavedChangesWarning]="true">
+  <ng-template #abpHeader>
+    <h5 class="modal-title">{{ 'AbpAccount::DelegateNewUser' | abpLocalization }}</h5>
+  </ng-template>
+
+  <ng-template #abpBody>
+    <abp-create-user-delegate (save)="refreshData()"> </abp-create-user-delegate>
+  </ng-template>
+</abp-modal>

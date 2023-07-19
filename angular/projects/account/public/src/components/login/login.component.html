@@ -1,0 +1,66 @@
+<div
+  *ngIf="linkUser"
+  role="alert"
+  class="alert alert-warning"
+  [innerHTML]="'AbpAccount::LinkAccountWarning' | abpLocalization: '/account/login'"
+></div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" validateOnSubmit>
+  <div class="mb-3">
+    <label for="login-input-user-name-or-email-address" class="form-label">{{
+      'AbpAccount::UserNameOrEmailAddress' | abpLocalization
+    }}</label>
+    <input
+      class="form-control"
+      type="text"
+      id="login-input-user-name-or-email-address"
+      formControlName="username"
+      autofocus
+    />
+  </div>
+  <div class="mb-3">
+    <label for="login-input-password" class="form-label">{{ 'AbpAccount::Password' | abpLocalization }}</label>
+    <input
+      class="form-control"
+      type="password"
+      id="login-input-password"
+      formControlName="password"
+    />
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-check mb-2">
+        <input
+          class="mb-4 form-check-input"
+          type="checkbox"
+          id="login-input-remember-me"
+          formControlName="rememberMe"
+        />
+        <label class="form-check-label" for="login-input-remember-me">
+          {{ 'AbpAccount::RememberMe' | abpLocalization }}
+        </label>
+      </div>
+    </div>
+    <div class="text-end col">
+      <a routerLink="/account/forgot-password">{{
+        'AbpAccount::ForgotPassword' | abpLocalization
+      }}</a>
+    </div>
+  </div>
+  <div #recaptcha></div>
+  <abp-button
+    class="d-grid"
+    buttonClass="mt-2 mb-3 btn btn-primary"
+    [loading]="inProgress"
+    buttonType="submit"
+  >
+    {{ 'AbpAccount::Login' | abpLocalization }}
+  </abp-button>
+</form>
+
+<ng-container *ngIf="isSelfRegistrationEnabled">
+  {{ 'AbpAccount::NotAMemberYet' | abpLocalization }}
+  <a routerLink="/account/register" queryParamsHandling="preserve">{{
+    'AbpAccount::Register' | abpLocalization
+  }}</a>
+</ng-container>

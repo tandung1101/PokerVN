@@ -1,0 +1,39 @@
+<h2>{{ 'AbpIdentity::Menu:IdentityManagement' | abpLocalization }}</h2>
+<hr class="my-2"/>
+<ng-container *ngIf="features$ | async as features; else identityComponent">
+  <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+      <a ngbNavLink>{{ 'AbpIdentity::IdentitySettingsGeneral' | abpLocalization }}</a>
+      <ng-template ngbNavContent>
+        <ng-container *ngTemplateOutlet="identityComponent"></ng-container>
+      </ng-template>
+    </li>
+
+    <li ngbNavItem *ngFor="let feature of features">
+      <a ngbNavLink>{{
+        (feature === externalLoginKey
+          ? 'AbpIdentity::IdentitySettingsOAuth'
+          : 'AbpIdentity::IdentitySettingsLdap'
+        ) | abpLocalization
+      }}</a>
+      <ng-template ngbNavContent>
+        <ng-container
+          *ngTemplateOutlet="feature === externalLoginKey ? externalLogin : ldapLogin"
+        ></ng-container>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+</ng-container>
+
+<ng-template #identityComponent>
+  <abp-identity-setting></abp-identity-setting>
+</ng-template>
+
+<ng-template #externalLogin>
+  <abp-external-login-settings></abp-external-login-settings>
+</ng-template>
+
+<ng-template #ldapLogin>
+  <abp-ldap-login-settings></abp-ldap-login-settings>
+</ng-template>

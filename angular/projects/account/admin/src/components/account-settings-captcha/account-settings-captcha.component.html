@@ -1,0 +1,77 @@
+<div (keyup.enter)="submit()">
+  <h4>{{ 'AbpAccount::Captcha' | abpLocalization }}</h4>
+
+  <form *ngIf="form" [formGroup]="form">
+    <ng-container *ngIf="!isTenant">
+      <div class="form-check mb-2">
+        <input
+          type="checkbox"
+          id="use-captcha-on-login"
+          name="useCaptchaOnLogin"
+          class="form-check-input"
+          formControlName="useCaptchaOnLogin"
+          autofocus
+        /><label class="form-check-label" for="use-captcha-on-login">{{
+          'AbpAccount::Description:UseCaptchaOnLogin' | abpLocalization
+        }}</label>
+      </div>
+      <div class="form-check mb-2">
+        <input
+          type="checkbox"
+          id="use-captcha-on-registration"
+          name="useCaptchaOnRegistration"
+          class="form-check-input"
+          formControlName="useCaptchaOnRegistration"
+        /><label class="form-check-label" for="use-captcha-on-registration">{{
+          'AbpAccount::Description:UseCaptchaOnRegistration' | abpLocalization
+        }}</label>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">{{
+          'AbpAccount::DisplayName:VerifyBaseUrl' | abpLocalization
+        }}</label>
+        <input type="text" class="form-control" formControlName="verifyBaseUrl" />
+      </div>
+    </ng-container>
+
+    <div class="mb-3">
+      <label class="form-label" for="captcha-version">{{
+        'AbpAccount::DisplayName:Version' | abpLocalization
+      }}</label>
+      <select id="captcha-version" class="form-control" formControlName="version">
+        <option [ngValue]="2">2</option>
+        <option [ngValue]="3">3</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">{{ 'AbpAccount::DisplayName:SiteKey' | abpLocalization }}</label>
+      <input type="text" class="form-control" formControlName="siteKey" />
+      <small class="form-text text-muted">{{
+        'AbpAccount::SetNullWillUseGlobalSettings' | abpLocalization
+      }}</small>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">{{ 'AbpAccount::DisplayName:SiteSecret' | abpLocalization }}</label>
+      <input type="text" class="form-control" formControlName="siteSecret" />
+      <small class="form-text text-muted">{{
+        'AbpAccount::SetNullWillUseGlobalSettings' | abpLocalization
+      }}</small>
+    </div>
+
+    <div class="mb-3" *ngIf="form.controls.version.value === 3">
+      <label class="form-label">{{ 'AbpAccount::DisplayName:Score' | abpLocalization }}</label>
+      <input type="number" class="form-control" formControlName="score" min="0" max="1" />
+    </div>
+  </form>
+
+  <hr class="my-3" />
+
+  <div>
+    <abp-button (click)="submit()" iconClass="fa fa-save" [loading]="loading">{{
+      'AbpAccount::Save' | abpLocalization
+    }}</abp-button>
+  </div>
+</div>

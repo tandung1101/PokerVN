@@ -1,0 +1,25 @@
+<ng-container *ngIf="isLoaded; else loading">
+  <div class="form-check mb-2">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      id="two-factor-enabled"
+      [(ngModel)]="isTwoFactorEnabled"
+    />
+    <label class="form-check-label" for="two-factor-enabled">{{
+      'AbpAccount::DisplayName:TwoFactorEnabled' | abpLocalization
+    }}</label>
+  </div>
+  <abp-button
+    iconClass="fa fa-check"
+    buttonClass="btn btn-primary mt-2"
+    buttonType="submit"
+    [loading]="inProgress"
+    (click)="setTwoFactorEnabled()"
+    >{{ 'AbpAccount::Save' | abpLocalization }}</abp-button
+  >
+</ng-container>
+
+<ng-template #loading>
+  <div [abpLoading]="true"></div>
+</ng-template>

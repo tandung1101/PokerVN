@@ -1,0 +1,42 @@
+<div id="wrapper">
+  <abp-page [title]="'AbpAccount::MySecurityLogs' | abpLocalization" [toolbar]="data.items">
+    <div class="card">
+      <div class="card-body pb-lg-3">
+        <div class="row align-items-end" (keyup.enter)="list.get()">
+          <div class="col-md-12 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{ 'AbpAccount::Date' | abpLocalization }}</label>
+              <abp-date-range-picker
+                startDateProp="startTime"
+                endDateProp="endTime"
+                [(ngModel)]="filter"
+                [ngModelOptions]="{ standalone: true }"
+              >
+              </abp-date-range-picker>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{
+                'AbpAccount::MySecurityLogs:Action' | abpLocalization
+              }}</label>
+              <input type="text" class="form-control" [(ngModel)]="filter.action" />
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-2">
+            <button (click)="list.get()" class="mt-md-4 mb-md-3 btn btn-primary w-100">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <abp-extensible-table
+      [data]="data.items"
+      [recordsTotal]="data.totalCount"
+      [list]="list"
+    ></abp-extensible-table>
+  </abp-page>
+</div>

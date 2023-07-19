@@ -1,0 +1,18 @@
+{
+  "name": "@volo/abp.ng.identity",
+  "version": "7.2.2",
+  "homepage": "https://abp.io",
+  "dependencies": {
+    "@abp/ng.components": "~7.2.2",
+    "@abp/ng.permission-management": "~7.2.2",
+    "@abp/ng.setting-management": "~7.2.2",
+    "@abp/ng.theme.shared": "~7.2.2",
+    "@volo/abp.commercial.ng.ui": "~7.2.2",
+    "@volo/abp.ng.account": "~7.2.2",
+    "ng-zorro-antd": "^15.0.0",
+    "tslib": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

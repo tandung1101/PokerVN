@@ -1,4 +1,4 @@
-﻿using Volo.Abp.Account;
+using Volo.Abp.Account;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -11,6 +11,7 @@ using Volo.Saas.Host;
 using Volo.Abp.Gdpr;
 using Volo.Abp.OpenIddict;
 using Volo.Abp.LeptonTheme.Management;
+using Volo.FileManagement;
 
 namespace PokerVN;
 
@@ -30,7 +31,8 @@ namespace PokerVN;
     typeof(TextTemplateManagementApplicationContractsModule),
 	typeof(LeptonThemeManagementApplicationContractsModule)
 )]
-public class PokerVNApplicationContractsModule : AbpModule
+[DependsOn(typeof(FileManagementApplicationContractsModule))]
+    public class PokerVNApplicationContractsModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {

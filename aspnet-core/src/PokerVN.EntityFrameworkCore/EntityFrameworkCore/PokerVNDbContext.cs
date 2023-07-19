@@ -147,5 +147,6 @@ public class PokerVNDbContext :
 });
 
         }
-    }
+        builder.ConfigureIdentity();
+        }
 }

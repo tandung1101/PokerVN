@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\modules\Volo.FileManagement\src\Volo.FileManagement.Domain\Volo.FileManagement.Domain.csproj" />
     <ProjectReference Include="..\PokerVN.Domain.Shared\PokerVN.Domain.Shared.csproj" />
   	<PackageReference Include="Volo.Abp.LeptonTheme.Management.Domain" Version="7.2.2" />
 </ItemGroup>
@@ -24,7 +25,7 @@
     <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="7.2.2" />
     <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="7.2.2" />
     <PackageReference Include="Volo.Abp.BlobStoring.Database.Domain" Version="7.2.2" />
-    <PackageReference Include="Volo.Abp.Identity.Pro.Domain" Version="7.2.2" />
+    <ProjectReference Include="..\..\modules\Volo.Identity.Pro\src\Volo.Abp.Identity.Pro.Domain\Volo.Abp.Identity.Pro.Domain.csproj" />
     <PackageReference Include="Volo.Abp.LanguageManagement.Domain" Version="7.2.2" />
     <PackageReference Include="Volo.Saas.Domain" Version="7.2.2" />
     <PackageReference Include="Volo.Abp.TextTemplateManagement.Domain" Version="7.2.2" />

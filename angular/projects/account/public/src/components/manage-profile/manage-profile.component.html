@@ -1,0 +1,43 @@
+<div class="row entry-row">
+  <div class="col-auto"></div>
+  <div id="breadcrumb" class="col-lg-auto ps-lg-0"></div>
+  <div class="col"></div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <ul class="nav flex-column nav-pills" id="nav-tab" role="tablist">
+          <ng-container *ngFor="let tab of tabs; trackBy: track.by('name')">
+            <li *abpPermission="tab.requiredPolicy" class="nav-item" (click)="selected = tab">
+              <a
+                class="nav-link"
+                [ngClass]="{ active: selected?.name === tab.name }"
+                role="tab"
+                href="javascript:void(0)"
+                >{{ tab.name | abpLocalization }}</a
+              >
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+      <div class="col-12 col-md-9">
+        <div *ngIf="isProfileLoaded && tabs.length && selected" class="tab-content">
+          <div
+            [@fadeIn]
+            [id]="selected.name + '-tab'"
+            class="tab-pane fade show active"
+            role="tabpanel"
+          >
+            <h2>{{ selected.name | abpLocalization }}</h2>
+
+            <hr class="my-4" />
+
+            <ng-container *ngComponentOutlet="selected.component"></ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div id="wrapper">
+  <abp-page [title]="'AbpIdentity::SecurityLogs' | abpLocalization" [toolbar]="data.items">
+    <div class="card">
+      <div class="card-body pb-lg-3">
+        <div class="row" (keyup.enter)="list.get()">
+          <div class="col-md-12 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{ 'AbpIdentity::Date' | abpLocalization }}</label>
+              <abp-date-range-picker
+                startDateProp="startTime"
+                endDateProp="endTime"
+                [ngModel]="filter"
+                (ngModelChange)="setDate($event)"
+                [ngModelOptions]="{ standalone: true }"
+              >
+              </abp-date-range-picker>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{
+                'AbpIdentity::SecurityLogs:Application' | abpLocalization
+              }}</label>
+              <input type="text" class="form-control" [(ngModel)]="filter.applicationName" />
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{
+                'AbpIdentity::SecurityLogs:Identity' | abpLocalization
+              }}</label>
+              <input type="text" class="form-control" [(ngModel)]="filter.identity" />
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{
+                'AbpIdentity::SecurityLogs:UserName' | abpLocalization
+              }}</label>
+              <input type="text" class="form-control" [(ngModel)]="filter.userName" />
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{
+                'AbpIdentity::SecurityLogs:Action' | abpLocalization
+              }}</label>
+              <input type="text" class="form-control" [(ngModel)]="filter.action" />
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{
+                'AbpIdentity::SecurityLogs:Client' | abpLocalization
+              }}</label>
+              <input type="text" class="form-control" [(ngModel)]="filter.clientId" />
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="mb-3">
+              <label class="form-label">{{
+                'AbpIdentity::SecurityLogs:CorrelationId' | abpLocalization
+              }}</label>
+              <input type="text" class="form-control" [(ngModel)]="filter.correlationId" />
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2">
+            <div class="mt-3 d-grid">
+              <button (click)="list.get()" class="btn btn-primary">
+                <i class="fas fa-search" aria-hidden="true"></i> &nbsp;
+                <span>{{ 'SecurityLogs::Refresh' | abpLocalization }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body p-0">
+        <abp-extensible-table
+          [data]="data.items"
+          [recordsTotal]="data.totalCount"
+          [list]="list"
+        ></abp-extensible-table>
+      </div>
+    </div>
+  </abp-page>
+</div>

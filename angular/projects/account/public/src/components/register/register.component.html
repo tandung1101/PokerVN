@@ -1,0 +1,36 @@
+<form *ngIf="isSelfRegistrationEnabled" [formGroup]="form" (ngSubmit)="onSubmit()" validateOnSubmit>
+  <div class="mb-3">
+    <label for="input-user-name" class="form-label">{{ 'AbpAccount::UserName' | abpLocalization }}</label
+    ><span> * </span>
+    <input
+      autofocus
+      type="text"
+      id="input-user-name"
+      class="form-control"
+      formControlName="username"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="input-email-address" class="form-label">{{ 'AbpAccount::EmailAddress' | abpLocalization }}</label
+    ><span> * </span>
+    <input type="email" id="input-email-address" class="form-control" formControlName="email" />
+  </div>
+  <div class="mb-3">
+    <label for="input-password" class="form-label">{{ 'AbpAccount::Password' | abpLocalization }}</label
+    ><span> * </span>
+    <input type="password" id="input-password" class="form-control" formControlName="password" />
+  </div>
+  <div #recaptcha></div>
+
+  <abp-button
+    class="d-grid"
+    buttonClass="mt-2 mb-3 btn btn-primary"
+    [loading]="inProgress"
+    buttonType="submit"
+  >
+    {{ 'AbpAccount::Register' | abpLocalization }}
+  </abp-button>
+</form>
+
+{{ 'AbpAccount::AlreadyRegistered' | abpLocalization }}
+<a routerLink="/account/login">{{ 'AbpAccount::Login' | abpLocalization }}</a>
