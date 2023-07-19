@@ -1,0 +1,806 @@
+<abp-page [title]="'::EventShedules' | abpLocalization">
+  <abp-page-toolbar-container class="col">
+    <div class="text-lg-end pt-2">
+      <button
+        class="btn btn-primary btn-sm mx-2"
+        type="button"
+        [disabled]="isExportToExcelBusy"
+        (click)="exportToExcel()"
+      >
+        {{ '::ExportToExcel' | abpLocalization }}
+      </button>
+
+      <button
+        *abpPermission="'PokerVN.EventShedules.Create'"
+        class="btn btn-primary btn-sm"
+        type="button"
+        (click)="create()"
+      >
+        <i class="fa fa-plus me-1" aria-hidden="true"></i>
+        {{ '::NewEventShedule' | abpLocalization }}
+      </button>
+    </div>
+  </abp-page-toolbar-container>
+
+  <abp-advanced-entity-filters localizationSourceName="" [list]="list">
+    <abp-advanced-entity-filters-form>
+      <form #filterForm (keyup.enter)="list.get()">
+        <div class="row">
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="eventCodeFilter">
+                {{ '::EventCode' | abpLocalization }}
+              </label>
+
+              <input
+                id="eventCodeFilter"
+                class="form-control"
+                [(ngModel)]="filters.eventCode"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="eventNameFilter">
+                {{ '::EventName' | abpLocalization }}
+              </label>
+
+              <input
+                id="eventNameFilter"
+                class="form-control"
+                [(ngModel)]="filters.eventName"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="clubCodeFilter">
+                {{ '::ClubCode' | abpLocalization }}
+              </label>
+
+              <input
+                id="clubCodeFilter"
+                class="form-control"
+                [(ngModel)]="filters.clubCode"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="matchDayFilter">
+                {{ '::MatchDay' | abpLocalization }}
+              </label>
+
+              <input
+                id="matchDayFilter"
+                class="form-control"
+                [(ngModel)]="filters.matchDay"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="timeDayFilter">
+                {{ '::TimeDay' | abpLocalization }}
+              </label>
+
+              <input
+                id="timeDayFilter"
+                class="form-control"
+                [(ngModel)]="filters.timeDay"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="minFullMatchDay">
+                {{ '::MinFullMatchDay' | abpLocalization }}
+              </label>
+
+              <div class="input-group" validationTarget>
+                <input
+                  id="minFullMatchDay"
+                  class="form-control"
+                  #minFullMatchDayInput
+                  #minFullMatchDayDatepicker="ngbDatepicker"
+                  name="minFullMatchDay"
+                  ngbDatepicker
+                  container="body"
+                  readonly
+                  (click)="minFullMatchDayDatepicker.toggle()"
+                  (keyup.space)="minFullMatchDayDatepicker.toggle()"
+                  [(ngModel)]="filters.fullMatchDayMin"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <div *ngIf="minFullMatchDayInput.value" class="input-group-append">
+                  <button
+                    class="btn btn-link px-2"
+                    type="button"
+                    [title]="'AbpUi::Clear' | abpLocalization"
+                    (click)="
+                      minFullMatchDayDatepicker.writeValue(null);
+                      minFullMatchDayDatepicker.manualDateChange(null, true)
+                    "
+                  >
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="maxFullMatchDay">
+                {{ '::MaxFullMatchDay' | abpLocalization }}
+              </label>
+
+              <div class="input-group" validationTarget>
+                <input
+                  id="maxFullMatchDay"
+                  class="form-control"
+                  #maxFullMatchDayInput
+                  #maxFullMatchDayDatepicker="ngbDatepicker"
+                  name="maxFullMatchDay"
+                  ngbDatepicker
+                  readonly
+                  (click)="maxFullMatchDayDatepicker.toggle()"
+                  (keyup.space)="maxFullMatchDayDatepicker.toggle()"
+                  [(ngModel)]="filters.fullMatchDayMax"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <div *ngIf="maxFullMatchDayInput.value" class="input-group-append">
+                  <button
+                    class="btn btn-link px-2"
+                    type="button"
+                    [title]="'AbpUi::Clear' | abpLocalization"
+                    (click)="
+                      maxFullMatchDayDatepicker.writeValue(null);
+                      maxFullMatchDayDatepicker.manualDateChange(null, true)
+                    "
+                  >
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="descEventFilter">
+                {{ '::DescEvent' | abpLocalization }}
+              </label>
+
+              <input
+                id="descEventFilter"
+                class="form-control"
+                [(ngModel)]="filters.descEvent"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="daysFilter">
+                {{ '::Days' | abpLocalization }}
+              </label>
+
+              <input
+                id="daysFilter"
+                class="form-control"
+                [(ngModel)]="filters.days"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="entryCostVNDFilter">
+                {{ '::EntryCostVND' | abpLocalization }}
+              </label>
+
+              <input
+                id="entryCostVNDFilter"
+                class="form-control"
+                [(ngModel)]="filters.entryCostVND"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="descEntryCostVNDFilter">
+                {{ '::DescEntryCostVND' | abpLocalization }}
+              </label>
+
+              <input
+                id="descEntryCostVNDFilter"
+                class="form-control"
+                [(ngModel)]="filters.descEntryCostVND"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="entryCostUSDFilter">
+                {{ '::EntryCostUSD' | abpLocalization }}
+              </label>
+
+              <input
+                id="entryCostUSDFilter"
+                class="form-control"
+                [(ngModel)]="filters.entryCostUSD"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="descEntryCostUSDFilter">
+                {{ '::DescEntryCostUSD' | abpLocalization }}
+              </label>
+
+              <input
+                id="descEntryCostUSDFilter"
+                class="form-control"
+                [(ngModel)]="filters.descEntryCostUSD"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="guaranteeVNDFilter">
+                {{ '::GuaranteeVND' | abpLocalization }}
+              </label>
+
+              <input
+                id="guaranteeVNDFilter"
+                class="form-control"
+                [(ngModel)]="filters.guaranteeVND"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="guaranteeUSDFilter">
+                {{ '::GuaranteeUSD' | abpLocalization }}
+              </label>
+
+              <input
+                id="guaranteeUSDFilter"
+                class="form-control"
+                [(ngModel)]="filters.guaranteeUSD"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="stackBeginFilter">
+                {{ '::StackBegin' | abpLocalization }}
+              </label>
+
+              <input
+                id="stackBeginFilter"
+                class="form-control"
+                [(ngModel)]="filters.stackBegin"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="blindsFilter">
+                {{ '::Blinds' | abpLocalization }}
+              </label>
+
+              <input
+                id="blindsFilter"
+                class="form-control"
+                [(ngModel)]="filters.blinds"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="regCloseStartOfLevelFilter">
+                {{ '::RegCloseStartOfLevel' | abpLocalization }}
+              </label>
+
+              <input
+                id="regCloseStartOfLevelFilter"
+                class="form-control"
+                [(ngModel)]="filters.regCloseStartOfLevel"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="regCloseStartOfTimeFilter">
+                {{ '::RegCloseStartOfTime' | abpLocalization }}
+              </label>
+
+              <input
+                id="regCloseStartOfTimeFilter"
+                class="form-control"
+                [(ngModel)]="filters.regCloseStartOfTime"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="liveFinalFilter">
+                {{ '::LiveFinal' | abpLocalization }}
+              </label>
+
+              <input
+                id="liveFinalFilter"
+                class="form-control"
+                [(ngModel)]="filters.liveFinal"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="isHighRollerFilter">
+                {{ '::IsHighRoller' | abpLocalization }}
+              </label>
+
+              <input
+                id="isHighRollerFilter"
+                class="form-control"
+                [(ngModel)]="filters.isHighRoller"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <div class="mb-3">
+              <label class="form-label" for="isDeepStackFilter">
+                {{ '::IsDeepStack' | abpLocalization }}
+              </label>
+
+              <input
+                id="isDeepStackFilter"
+                class="form-control"
+                [(ngModel)]="filters.isDeepStack"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-auto align-self-end mb-3">
+            <div class="row">
+              <div class="col-6 col-sm-auto d-grid">
+                <button type="button" class="btn btn-outline-primary" (click)="clearFilters()">
+                  <span>{{ 'AbpUi::Clear' | abpLocalization }}</span>
+                </button>
+              </div>
+              <div class="col-6 col-sm-auto d-grid">
+                <button type="button" class="btn btn-primary" (click)="list.get()">
+                  <span>{{ 'AbpUi::Refresh' | abpLocalization }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </abp-advanced-entity-filters-form>
+  </abp-advanced-entity-filters>
+
+  <div class="card">
+    <div class="card-body">
+      <ngx-datatable [rows]="data.items" [count]="data.totalCount" [list]="list" default>
+        <ngx-datatable-column
+          [name]="'AbpUi::Actions' | abpLocalization"
+          [maxWidth]="150"
+          [width]="150"
+          [sortable]="false"
+        >
+          <ng-template let-row="row" let-i="rowIndex" ngx-datatable-cell-template>
+            <div ngbDropdown container="body" class="d-inline-block">
+              <button
+                class="btn btn-primary btn-sm dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                ngbDropdownToggle
+              >
+                <i class="fa fa-cog me-1" aria-hidden="true"></i>
+                {{ 'AbpUi::Actions' | abpLocalization }}
+              </button>
+
+              <div ngbDropdownMenu>
+                <button
+                  ngbDropdownItem
+                  *abpPermission="'PokerVN.EventShedules.Edit'"
+                  (click)="update(row)"
+                >
+                  {{ 'AbpUi::Edit' | abpLocalization }}
+                </button>
+
+                <button
+                  ngbDropdownItem
+                  *abpPermission="'PokerVN.EventShedules.Delete'"
+                  (click)="delete(row)"
+                >
+                  {{ 'AbpUi::Delete' | abpLocalization }}
+                </button>
+              </div>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::EventCode' | abpLocalization }}" prop="eventCode">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.eventCode }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::EventName' | abpLocalization }}" prop="eventName">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.eventName }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::ClubCode' | abpLocalization }}" prop="clubCode">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.clubCode }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::MatchDay' | abpLocalization }}" prop="matchDay">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.matchDay }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::TimeDay' | abpLocalization }}" prop="timeDay">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.timeDay }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::FullMatchDay' | abpLocalization }}" prop="fullMatchDay">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.fullMatchDay | date }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::DescEvent' | abpLocalization }}" prop="descEvent">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.descEvent }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::Days' | abpLocalization }}" prop="days">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.days }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::EntryCostVND' | abpLocalization }}" prop="entryCostVND">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.entryCostVND }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column
+          name="{{ '::DescEntryCostVND' | abpLocalization }}"
+          prop="descEntryCostVND"
+        >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.descEntryCostVND }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::EntryCostUSD' | abpLocalization }}" prop="entryCostUSD">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.entryCostUSD }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column
+          name="{{ '::DescEntryCostUSD' | abpLocalization }}"
+          prop="descEntryCostUSD"
+        >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.descEntryCostUSD }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::GuaranteeVND' | abpLocalization }}" prop="guaranteeVND">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.guaranteeVND }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::GuaranteeUSD' | abpLocalization }}" prop="guaranteeUSD">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.guaranteeUSD }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::StackBegin' | abpLocalization }}" prop="stackBegin">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.stackBegin }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::Blinds' | abpLocalization }}" prop="blinds">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.blinds }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column
+          name="{{ '::RegCloseStartOfLevel' | abpLocalization }}"
+          prop="regCloseStartOfLevel"
+        >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.regCloseStartOfLevel }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column
+          name="{{ '::RegCloseStartOfTime' | abpLocalization }}"
+          prop="regCloseStartOfTime"
+        >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.regCloseStartOfTime }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::LiveFinal' | abpLocalization }}" prop="liveFinal">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.liveFinal }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::IsHighRoller' | abpLocalization }}" prop="isHighRoller">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.isHighRoller }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="{{ '::IsDeepStack' | abpLocalization }}" prop="isDeepStack">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.isDeepStack }}
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</abp-page>
+
+<abp-modal [busy]="isModalBusy" [(visible)]="isModalOpen">
+  <ng-template #abpHeader>
+    <h3>
+      {{ (selected ? 'AbpUi::Edit' : '::NewEventShedule') | abpLocalization }}
+    </h3>
+  </ng-template>
+
+  <ng-template #abpBody>
+    <form [formGroup]="form" id="event-shedule" (ngSubmit)="submitForm()" validateOnSubmit>
+      <div class="mt-2 fade-in-top">
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-event-code">
+            {{ '::EventCode' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-event-code"
+            formControlName="eventCode"
+            class="form-control"
+            autofocus
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-event-name">
+            {{ '::EventName' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-event-name" formControlName="eventName" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-club-code">
+            {{ '::ClubCode' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-club-code" formControlName="clubCode" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-match-day">
+            {{ '::MatchDay' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-match-day" formControlName="matchDay" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-time-day">
+            {{ '::TimeDay' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-time-day" formControlName="timeDay" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-full-match-day">
+            {{ '::FullMatchDay' | abpLocalization }}
+          </label>
+
+          <div class="input-group" validationTarget>
+            <input
+              readonly
+              id="event-shedule-full-match-day"
+              formControlName="fullMatchDay"
+              class="form-control"
+              ngbDatepicker
+              #fullMatchDayInput
+              #fullMatchDayDatepicker="ngbDatepicker"
+              (click)="fullMatchDayDatepicker.open()"
+              (keyup.space)="fullMatchDayDatepicker.open()"
+            />
+            <div *ngIf="fullMatchDayInput.value" class="input-group-append">
+              <button
+                class="btn btn-link px-2"
+                type="button"
+                [title]="'AbpUi::Clear' | abpLocalization"
+                (click)="
+                  fullMatchDayDatepicker.writeValue(null);
+                  fullMatchDayDatepicker.manualDateChange(null, true)
+                "
+              >
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-desc-event">
+            {{ '::DescEvent' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-desc-event" formControlName="descEvent" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-days">
+            {{ '::Days' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-days" formControlName="days" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-entry-cost-vnd">
+            {{ '::EntryCostVND' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-entry-cost-vnd"
+            formControlName="entryCostVND"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-desc-entry-cost-vnd">
+            {{ '::DescEntryCostVND' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-desc-entry-cost-vnd"
+            formControlName="descEntryCostVND"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-entry-cost-usd">
+            {{ '::EntryCostUSD' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-entry-cost-usd"
+            formControlName="entryCostUSD"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-desc-entry-cost-usd">
+            {{ '::DescEntryCostUSD' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-desc-entry-cost-usd"
+            formControlName="descEntryCostUSD"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-guarantee-vnd">
+            {{ '::GuaranteeVND' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-guarantee-vnd"
+            formControlName="guaranteeVND"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-guarantee-usd">
+            {{ '::GuaranteeUSD' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-guarantee-usd"
+            formControlName="guaranteeUSD"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-stack-begin">
+            {{ '::StackBegin' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-stack-begin" formControlName="stackBegin" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-blinds">
+            {{ '::Blinds' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-blinds" formControlName="blinds" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-reg-close-start-of-level">
+            {{ '::RegCloseStartOfLevel' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-reg-close-start-of-level"
+            formControlName="regCloseStartOfLevel"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-reg-close-start-of-time">
+            {{ '::RegCloseStartOfTime' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-reg-close-start-of-time"
+            formControlName="regCloseStartOfTime"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-live-final">
+            {{ '::LiveFinal' | abpLocalization }}
+          </label>
+
+          <input id="event-shedule-live-final" formControlName="liveFinal" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-is-high-roller">
+            {{ '::IsHighRoller' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-is-high-roller"
+            formControlName="isHighRoller"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="event-shedule-is-deep-stack">
+            {{ '::IsDeepStack' | abpLocalization }}
+          </label>
+
+          <input
+            id="event-shedule-is-deep-stack"
+            formControlName="isDeepStack"
+            class="form-control"
+          />
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #abpFooter>
+    <button type="button" class="btn btn-secondary" abpClose>
+      {{ 'AbpUi::Cancel' | abpLocalization }}
+    </button>
+
+    <abp-button iconClass="fa fa-check" buttonType="submit" formName="event-shedule">
+      {{ 'AbpUi::Save' | abpLocalization }}
+    </abp-button>
+  </ng-template>
+</abp-modal>

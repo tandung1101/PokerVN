@@ -69,6 +69,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./poker-clubs/poker-club/poker-club.module').then(m => m.PokerClubModule),
   },
+  {
+    path: 'event-shedules',
+    loadChildren: () =>
+      import('./event-shedules/event-shedule/event-shedule.module').then(m => m.EventSheduleModule),
+  },
 ];
 
 @NgModule({

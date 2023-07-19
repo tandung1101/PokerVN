@@ -482,6 +482,590 @@
               }
             }
           }
+        },
+        "PokerVN.Controllers.EventShedules.EventSheduleController": {
+          "controllerName": "EventShedule",
+          "type": "PokerVN.Controllers.EventShedules.EventSheduleController",
+          "isRemoteService": true,
+          "isIntegrationService": false,
+          "interfaces": [
+            {
+              "type": "PokerVN.EventShedules.IEventSheduleAppService"
+            }
+          ],
+          "actions": {
+            "GetListAsyncByInput": {
+              "uniqueName": "GetListAsyncByInput",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/event-shedules",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "PokerVN.EventShedules.GetEventShedulesInput, PokerVN.Application.Contracts",
+                  "type": "PokerVN.EventShedules.GetEventShedulesInput",
+                  "typeSimple": "PokerVN.EventShedules.GetEventShedulesInput",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "FilterText",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "EventCode",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "EventName",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "ClubCode",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "MatchDay",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "TimeDay",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "FullMatchDayMin",
+                  "jsonName": null,
+                  "type": "System.DateTime?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "FullMatchDayMax",
+                  "jsonName": null,
+                  "type": "System.DateTime?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "DescEvent",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "Days",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "EntryCostVND",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "DescEntryCostVND",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "EntryCostUSD",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "DescEntryCostUSD",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "GuaranteeVND",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "GuaranteeUSD",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "StackBegin",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "Blinds",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "RegCloseStartOfLevel",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "RegCloseStartOfTime",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "LiveFinal",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "IsHighRoller",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "IsDeepStack",
+                  "jsonName": null,
+                  "type": "System.String?",
+                  "typeSimple": "string?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<PokerVN.EventShedules.EventSheduleDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<PokerVN.EventShedules.EventSheduleDto>"
+              }
+            },
+            "GetAsyncById": {
+              "uniqueName": "GetAsyncById",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/app/event-shedules/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "PokerVN.EventShedules.EventSheduleDto",
+                "typeSimple": "PokerVN.EventShedules.EventSheduleDto"
+              }
+            },
+            "GetListAsExcelFileAsyncByInput": {
+              "uniqueName": "GetListAsExcelFileAsyncByInput",
+              "name": "GetListAsExcelFileAsync",
+              "httpMethod": "GET",
+              "url": "api/app/event-shedules/as-excel-file",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "PokerVN.EventShedules.EventSheduleExcelDownloadDto, PokerVN.Application.Contracts",
+                  "type": "PokerVN.EventShedules.EventSheduleExcelDownloadDto",
+                  "typeSimple": "PokerVN.EventShedules.EventSheduleExcelDownloadDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "DownloadToken",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "FilterText",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "Name",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Content.IRemoteStreamContent",
+                "typeSimple": "Volo.Abp.Content.IRemoteStreamContent"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "PokerVN.EventShedules.IEventShedulesAppService"
+            },
+            "GetDownloadTokenAsync": {
+              "uniqueName": "GetDownloadTokenAsync",
+              "name": "GetDownloadTokenAsync",
+              "httpMethod": "GET",
+              "url": "api/app/event-shedules/download-token",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "PokerVN.Shared.DownloadTokenResultDto",
+                "typeSimple": "PokerVN.Shared.DownloadTokenResultDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "PokerVN.EventShedules.IEventShedulesAppService"
+            },
+            "CreateAsyncByInput": {
+              "uniqueName": "CreateAsyncByInput",
+              "name": "CreateAsync",
+              "httpMethod": "POST",
+              "url": "api/app/event-shedules",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "PokerVN.EventShedules.EventSheduleCreateDto, PokerVN.Application.Contracts",
+                  "type": "PokerVN.EventShedules.EventSheduleCreateDto",
+                  "typeSimple": "PokerVN.EventShedules.EventSheduleCreateDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "PokerVN.EventShedules.EventSheduleCreateDto",
+                  "typeSimple": "PokerVN.EventShedules.EventSheduleCreateDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "PokerVN.EventShedules.EventSheduleDto",
+                "typeSimple": "PokerVN.EventShedules.EventSheduleDto"
+              }
+            },
+            "UpdateAsyncByIdAndInput": {
+              "uniqueName": "UpdateAsyncByIdAndInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/app/event-shedules/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "PokerVN.EventShedules.EventSheduleUpdateDto, PokerVN.Application.Contracts",
+                  "type": "PokerVN.EventShedules.EventSheduleUpdateDto",
+                  "typeSimple": "PokerVN.EventShedules.EventSheduleUpdateDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "PokerVN.EventShedules.EventSheduleUpdateDto",
+                  "typeSimple": "PokerVN.EventShedules.EventSheduleUpdateDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "PokerVN.EventShedules.EventSheduleDto",
+                "typeSimple": "PokerVN.EventShedules.EventSheduleDto"
+              }
+            },
+            "DeleteAsyncById": {
+              "uniqueName": "DeleteAsyncById",
+              "name": "DeleteAsync",
+              "httpMethod": "DELETE",
+              "url": "api/app/event-shedules/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              }
+            }
+          }
         }
       }
     }
@@ -1397,6 +1981,766 @@
           "jsonName": null,
           "type": "System.Int64?",
           "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "PokerVN.EventShedules.GetEventShedulesInput": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "FilterText",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        },
+        {
+          "name": "EventCode",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "EventName",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "ClubCode",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "MatchDay",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "TimeDay",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "FullMatchDayMin",
+          "jsonName": null,
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "FullMatchDayMax",
+          "jsonName": null,
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "DescEvent",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "Days",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "EntryCostVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "DescEntryCostVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "EntryCostUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "DescEntryCostUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "GuaranteeVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "GuaranteeUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "StackBegin",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "Blinds",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "RegCloseStartOfLevel",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "RegCloseStartOfTime",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "LiveFinal",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "IsHighRoller",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        },
+        {
+          "name": "IsDeepStack",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRequired": false
+        }
+      ]
+    },
+    "PokerVN.EventShedules.EventSheduleDto": {
+      "baseType": "Volo.Abp.Application.Dtos.FullAuditedEntityDto<System.Guid>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "EventCode",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EventName",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "ClubCode",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "MatchDay",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "TimeDay",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "FullMatchDay",
+          "jsonName": null,
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEvent",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "Days",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EntryCostVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEntryCostVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EntryCostUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEntryCostUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "GuaranteeVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "GuaranteeUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "StackBegin",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "Blinds",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "RegCloseStartOfLevel",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "RegCloseStartOfTime",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "LiveFinal",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "IsHighRoller",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "IsDeepStack",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "ConcurrencyStamp",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "PokerVN.EventShedules.EventSheduleCreateDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "EventCode",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EventName",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "ClubCode",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "MatchDay",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "TimeDay",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "FullMatchDay",
+          "jsonName": null,
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEvent",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "Days",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EntryCostVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEntryCostVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EntryCostUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEntryCostUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "GuaranteeVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "GuaranteeUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "StackBegin",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "Blinds",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "RegCloseStartOfLevel",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "RegCloseStartOfTime",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "LiveFinal",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "IsHighRoller",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "IsDeepStack",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        }
+      ]
+    },
+    "PokerVN.EventShedules.EventSheduleUpdateDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "EventCode",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EventName",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "ClubCode",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "MatchDay",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "TimeDay",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "FullMatchDay",
+          "jsonName": null,
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEvent",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "Days",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EntryCostVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEntryCostVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "EntryCostUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "DescEntryCostUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "GuaranteeVND",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "GuaranteeUSD",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "StackBegin",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "Blinds",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "RegCloseStartOfLevel",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "RegCloseStartOfTime",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "LiveFinal",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "IsHighRoller",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "IsDeepStack",
+          "jsonName": null,
+          "type": "System.String?",
+          "typeSimple": "string?",
+          "isRef": false,
+          "isRequired": false
+        },
+        {
+          "name": "ConcurrencyStamp",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false
+        }
+      ]
+    },
+    "PokerVN.EventShedules.EventSheduleExcelDownloadDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "DownloadToken",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "FilterText",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,

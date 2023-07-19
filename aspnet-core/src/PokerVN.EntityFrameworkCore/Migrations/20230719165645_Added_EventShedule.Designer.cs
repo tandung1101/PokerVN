@@ -13,8 +13,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace PokerVN.Migrations
 {
     [DbContext(typeof(PokerVNDbContext))]
-    [Migration("20230718183033_Added_PokerClub")]
-    partial class AddedPokerClub
+    [Migration("20230719165645_Added_EventShedule")]
+    partial class AddedEventShedule
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,140 @@ namespace PokerVN.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("PokerVN.EventShedules.EventShedule", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Blinds")
+                        .HasColumnType("text")
+                        .HasColumnName("Blinds");
+
+                    b.Property<string>("ClubCode")
+                        .HasColumnType("text")
+                        .HasColumnName("ClubCode");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<string>("Days")
+                        .HasColumnType("text")
+                        .HasColumnName("Days");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("DescEntryCostUSD")
+                        .HasColumnType("text")
+                        .HasColumnName("DescEntryCostUSD");
+
+                    b.Property<string>("DescEntryCostVND")
+                        .HasColumnType("text")
+                        .HasColumnName("DescEntryCostVND");
+
+                    b.Property<string>("DescEvent")
+                        .HasColumnType("text")
+                        .HasColumnName("DescEvent");
+
+                    b.Property<string>("EntryCostUSD")
+                        .HasColumnType("text")
+                        .HasColumnName("EntryCostUSD");
+
+                    b.Property<string>("EntryCostVND")
+                        .HasColumnType("text")
+                        .HasColumnName("EntryCostVND");
+
+                    b.Property<string>("EventCode")
+                        .HasColumnType("text")
+                        .HasColumnName("EventCode");
+
+                    b.Property<string>("EventName")
+                        .HasColumnType("text")
+                        .HasColumnName("EventName");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("text")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<DateTime>("FullMatchDay")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("FullMatchDay");
+
+                    b.Property<string>("GuaranteeUSD")
+                        .HasColumnType("text")
+                        .HasColumnName("GuaranteeUSD");
+
+                    b.Property<string>("GuaranteeVND")
+                        .HasColumnType("text")
+                        .HasColumnName("GuaranteeVND");
+
+                    b.Property<string>("IsDeepStack")
+                        .HasColumnType("text")
+                        .HasColumnName("IsDeepStack");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<string>("IsHighRoller")
+                        .HasColumnType("text")
+                        .HasColumnName("IsHighRoller");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("LiveFinal")
+                        .HasColumnType("text")
+                        .HasColumnName("LiveFinal");
+
+                    b.Property<string>("MatchDay")
+                        .HasColumnType("text")
+                        .HasColumnName("MatchDay");
+
+                    b.Property<string>("RegCloseStartOfLevel")
+                        .HasColumnType("text")
+                        .HasColumnName("RegCloseStartOfLevel");
+
+                    b.Property<string>("RegCloseStartOfTime")
+                        .HasColumnType("text")
+                        .HasColumnName("RegCloseStartOfTime");
+
+                    b.Property<string>("StackBegin")
+                        .HasColumnType("text")
+                        .HasColumnName("StackBegin");
+
+                    b.Property<string>("TimeDay")
+                        .HasColumnType("text")
+                        .HasColumnName("TimeDay");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppEventShedules", (string)null);
+                });
 
             modelBuilder.Entity("PokerVN.PokerClubs.PokerClub", b =>
                 {

@@ -23,6 +23,7 @@ import { OpeniddictproConfigModule } from '@volo/abp.ng.openiddictpro/config';
 import { FeatureManagementModule } from '@abp/ng.feature-management';
 import { AbpOAuthModule } from '@abp/ng.oauth';
 import { POKER_CLUBS_POKER_CLUB_ROUTE_PROVIDER } from './poker-clubs/poker-club/providers/poker-club-route.provider';
+import { EVENT_SHEDULES_EVENT_SHEDULE_ROUTE_PROVIDER } from './event-shedules/event-shedule/providers/event-shedule-route.provider';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -63,7 +64,11 @@ import { POKER_CLUBS_POKER_CLUB_ROUTE_PROVIDER } from './poker-clubs/poker-club/
       },
     }),
   ],
-  providers: [APP_ROUTE_PROVIDER, POKER_CLUBS_POKER_CLUB_ROUTE_PROVIDER],
+  providers: [
+    APP_ROUTE_PROVIDER,
+    POKER_CLUBS_POKER_CLUB_ROUTE_PROVIDER,
+    EVENT_SHEDULES_EVENT_SHEDULE_ROUTE_PROVIDER,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

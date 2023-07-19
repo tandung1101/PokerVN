@@ -21,6 +21,11 @@ public class PokerVNPermissionDefinitionProvider : PermissionDefinitionProvider
         pokerClubPermission.AddChild(PokerVNPermissions.PokerClubs.Create, L("Permission:Create"));
         pokerClubPermission.AddChild(PokerVNPermissions.PokerClubs.Edit, L("Permission:Edit"));
         pokerClubPermission.AddChild(PokerVNPermissions.PokerClubs.Delete, L("Permission:Delete"));
+
+        var eventShedulePermission = myGroup.AddPermission(PokerVNPermissions.EventShedules.Default, L("Permission:EventShedules"));
+        eventShedulePermission.AddChild(PokerVNPermissions.EventShedules.Create, L("Permission:Create"));
+        eventShedulePermission.AddChild(PokerVNPermissions.EventShedules.Edit, L("Permission:Edit"));
+        eventShedulePermission.AddChild(PokerVNPermissions.EventShedules.Delete, L("Permission:Delete"));
     }
 
     private static LocalizableString L(string name)
