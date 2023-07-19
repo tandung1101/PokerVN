@@ -1,3 +1,4 @@
+using PokerVN.EventShedules;
 using PokerVN.PokerClubs;
 using System;
 using Microsoft.Extensions.DependencyInjection;
@@ -54,6 +55,8 @@ public class PokerVNEntityFrameworkCoreModule : AbpModule
              * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
             options.AddRepository<PokerClub, PokerClubs.EfCorePokerClubRepository>();
+
+            options.AddRepository<EventShedule, EventShedules.EfCoreEventSheduleRepository>();
 
         });
 

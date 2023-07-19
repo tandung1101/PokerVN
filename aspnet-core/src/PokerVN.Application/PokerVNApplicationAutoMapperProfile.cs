@@ -1,3 +1,4 @@
+using PokerVN.EventShedules;
 using System;
 using PokerVN.Shared;
 using Volo.Abp.AutoMapper;
@@ -16,5 +17,8 @@ public class PokerVNApplicationAutoMapperProfile : Profile
 
         CreateMap<PokerClub, PokerClubDto>();
         CreateMap<PokerClub, PokerClubExcelDto>();
+
+        CreateMap<EventShedule, EventSheduleDto>();
+        CreateMap<EventShedule, EventSheduleExcelDto>();
     }
 }

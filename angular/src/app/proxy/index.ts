@@ -1,3 +1,4 @@
+import * as EventShedules from './event-shedules';
 import * as PokerClubs from './poker-clubs';
 import * as Shared from './shared';
-export { PokerClubs, Shared };
+export { EventShedules, PokerClubs, Shared };

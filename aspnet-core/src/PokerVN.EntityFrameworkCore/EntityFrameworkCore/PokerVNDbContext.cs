@@ -1,3 +1,4 @@
+using PokerVN.EventShedules;
 using PokerVN.PokerClubs;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,7 @@ public class PokerVNDbContext :
     IIdentityProDbContext,
     ISaasDbContext
 {
+    public DbSet<EventShedule> EventShedules { get; set; }
     public DbSet<PokerClub> PokerClubs { get; set; }
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
@@ -115,5 +117,35 @@ public class PokerVNDbContext :
         b.Property(x => x.Description).HasColumnName(nameof(PokerClub.Description));
         b.Property(x => x.StatusCode).HasColumnName(nameof(PokerClub.StatusCode));
     });
+        if (builder.IsHostDatabase())
+        {
+            builder.Entity<EventShedule>(b =>
+{
+    b.ToTable(PokerVNConsts.DbTablePrefix + "EventShedules", PokerVNConsts.DbSchema);
+    b.ConfigureByConvention();
+    b.Property(x => x.EventCode).HasColumnName(nameof(EventShedule.EventCode));
+    b.Property(x => x.EventName).HasColumnName(nameof(EventShedule.EventName));
+    b.Property(x => x.ClubCode).HasColumnName(nameof(EventShedule.ClubCode));
+    b.Property(x => x.MatchDay).HasColumnName(nameof(EventShedule.MatchDay));
+    b.Property(x => x.TimeDay).HasColumnName(nameof(EventShedule.TimeDay));
+    b.Property(x => x.FullMatchDay).HasColumnName(nameof(EventShedule.FullMatchDay));
+    b.Property(x => x.DescEvent).HasColumnName(nameof(EventShedule.DescEvent));
+    b.Property(x => x.Days).HasColumnName(nameof(EventShedule.Days));
+    b.Property(x => x.EntryCostVND).HasColumnName(nameof(EventShedule.EntryCostVND));
+    b.Property(x => x.DescEntryCostVND).HasColumnName(nameof(EventShedule.DescEntryCostVND));
+    b.Property(x => x.EntryCostUSD).HasColumnName(nameof(EventShedule.EntryCostUSD));
+    b.Property(x => x.DescEntryCostUSD).HasColumnName(nameof(EventShedule.DescEntryCostUSD));
+    b.Property(x => x.GuaranteeVND).HasColumnName(nameof(EventShedule.GuaranteeVND));
+    b.Property(x => x.GuaranteeUSD).HasColumnName(nameof(EventShedule.GuaranteeUSD));
+    b.Property(x => x.StackBegin).HasColumnName(nameof(EventShedule.StackBegin));
+    b.Property(x => x.Blinds).HasColumnName(nameof(EventShedule.Blinds));
+    b.Property(x => x.RegCloseStartOfLevel).HasColumnName(nameof(EventShedule.RegCloseStartOfLevel));
+    b.Property(x => x.RegCloseStartOfTime).HasColumnName(nameof(EventShedule.RegCloseStartOfTime));
+    b.Property(x => x.LiveFinal).HasColumnName(nameof(EventShedule.LiveFinal));
+    b.Property(x => x.IsHighRoller).HasColumnName(nameof(EventShedule.IsHighRoller));
+    b.Property(x => x.IsDeepStack).HasColumnName(nameof(EventShedule.IsDeepStack));
+});
+
+        }
     }
 }
